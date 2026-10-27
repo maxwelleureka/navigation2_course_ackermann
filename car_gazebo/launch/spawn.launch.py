@@ -52,6 +52,11 @@ def generate_launch_description():
         launch_arguments={'namespace': namespace, 'use_sim_time': 'true'}.items()
     )
 
+    robot_control_cmd = IncludeLaunchDescription(
+        os.path.join(get_package_share_directory('car_control'), 'launch', 'control.launch.py'),
+        launch_arguments={'namespace': namespace, 'use_sim_time': 'true'}.items()
+    )
+
     spawn_entity_cmd = Node(
         package='ros_gz_sim',
         executable='create',
@@ -70,7 +75,7 @@ def generate_launch_description():
     ld.add_action(declare_x_cmd)
     ld.add_action(declare_y_cmd)
     ld.add_action(declare_z_rot_cmd)
-
+    ld.add_action(robot_control_cmd)
     ld.add_action(robot_description_cmd)
     ld.add_action(spawn_entity_cmd)
 

@@ -103,15 +103,15 @@ def generate_launch_description():
         parameters=[{'config_file': namespaced_bridge_file_path}]
     )	
 
-    joint_state_broadcaster_spawner = Node(
-        package="controller_manager",
-        executable="spawner",
-        arguments=["--controller-manager-timeout", "100", 
-             "-c", [namespace, '/controller_manager'], 
-             'joint_state_broadcaster',
-             ],
-        output='screen',
-    )
+    # joint_state_broadcaster_spawner = Node(
+    #     package="controller_manager",
+    #     executable="spawner",
+    #     arguments=["--controller-manager-timeout", "100", 
+    #          "-c", [namespace, '/controller_manager'], 
+    #          'joint_state_broadcaster',
+    #          ],
+    #     output='screen',
+    # )
 
 
     ld = LaunchDescription()
@@ -128,7 +128,7 @@ def generate_launch_description():
     ld.add_action(gazebo_cmd)
     ld.add_action(spawn_cmd)
     ld.add_action(gazebo_ros_bridge_cmd)
-    ld.add_action(joint_state_broadcaster_spawner)
+    # ld.add_action(joint_state_broadcaster_spawner)
 
 
 

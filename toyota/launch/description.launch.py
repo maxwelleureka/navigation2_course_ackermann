@@ -46,13 +46,13 @@ def generate_launch_description():
         parameters=[{'use_sim_time': use_sim_time}]
     )
 
-    ackermann_spawner = Node(
-        package='controller_manager',
-        executable='spawner',
-        arguments=['ackermann_steering_controller',
-                '--controller-manager', '/car/controller_manager'],
-        output='screen',
-    )
+    # ackermann_spawner = Node(
+    #     package='controller_manager',
+    #     executable='spawner',
+    #     arguments=['ackermann_steering_controller',
+    #             '--controller-manager', '/car/controller_manager'],
+    #     output='screen',
+    # )
 
     # Create the launch description and populate
     ld = LaunchDescription()
@@ -65,6 +65,6 @@ def generate_launch_description():
     ld.add_action(robot_state_publisher_cmd)
     ld.add_action(joint_state_publisher_cmd)
 
-    ld.add_action(ackermann_spawner)
+    # ld.add_action(ackermann_spawner)
 
     return ld
